@@ -3,6 +3,7 @@ import { useCallback, useRef, useState } from 'react'
 
 export function useGetUsers ({ search }) {
   const [data, setData] = useState([])
+  const [defaultUser, setdefaultUser] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const previousSearch = useRef(search)
@@ -14,7 +15,11 @@ export function useGetUsers ({ search }) {
       setLoading(true)
       setError(null)
       previousSearch.current = search
-      const newData = await searchUser({ search })
+      let newData = await searchUser({ search })
+      if (search === 'octocat') setdefaultUser(newData)
+      if (newData.message === 'Not Found') {
+        newData = defaultUser
+      }
       setData(newData)
     } catch (e) {
       setError(e.message)

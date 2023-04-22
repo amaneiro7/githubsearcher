@@ -1,10 +1,11 @@
 import './App.css'
-import { useCallback, useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Container } from '@mui/material'
 import { Searcher } from './components/Searcher'
 import { useSearch } from './hook/useSearch'
 import { useGetUsers } from './hook/useGetUsers'
 import debounce from 'just-debounce-it'
+import UserCard from './components/UserCard'
 
 function App () {
   const { search, updateSearch, error } = useSearch()
@@ -12,7 +13,6 @@ function App () {
 
   const debounceGetGitHubUsers = useCallback(
     debounce(search => {
-      console.log('search', search)
       gettingUser({ search })
     }, 300)
     , [gettingUser]
@@ -40,6 +40,7 @@ function App () {
   return (
     <Container sx={styleContainer}>
       <Searcher value={search} onChange={handleChange} onClick={handleClick} error={error} />
+      <UserCard data={data} />
     </Container>
   )
 }

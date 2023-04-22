@@ -1,19 +1,21 @@
 import { IconButton, Stack, TextField } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
 
-export function Searcher ({ value, onClick, onChange, error }) {
+export function Searcher ({ value, onClick, onChange }) {
   const styleTextField = {
     width: '90%',
     margin: '0 auto'
   }
 
+  const styleStack = {
+    width: '80%',
+    marginTop: '20px'
+  }
+
   return (
     <Stack
       direction='row'
-      sx={{
-        width: '80%',
-        marginTop: '20px'
-      }}
+      sx={styleStack}
     >
       <TextField
         id='outlined-basic'
