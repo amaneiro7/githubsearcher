@@ -1,10 +1,8 @@
-import { useState } from 'react'
-
 import './App.css'
 import { Container } from '@mui/material'
 import { Searcher } from './components/Searcher'
 
-function App() {
+function App () {
   return (
     <Container sx={{
       background: 'whitesmoke',
@@ -14,9 +12,10 @@ function App() {
       marginTop: '40px',
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center',      
-    }}>
-      <Searcher/>
+      alignItems: 'center'
+    }}
+    >
+      <Searcher />
     </Container>
   )
 }
